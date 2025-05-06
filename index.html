@@ -43,9 +43,30 @@
       border-radius: 5px;
       font-size: 1em;
     }
-    #map {
-      width: 100%;
+    .main-container {
+      display: flex;
+      flex-direction: row;
       height: 70vh;
+    }
+    .featured {
+      width: 30%;
+      background: #ffffff;
+      overflow-y: auto;
+      border-right: 1px solid #eee;
+      padding: 20px;
+    }
+    .featured h3 {
+      margin-top: 0;
+    }
+    .coach-card {
+      border-bottom: 1px solid #ddd;
+      padding: 10px 0;
+    }
+    .coach-card:last-child {
+      border-bottom: none;
+    }
+    #map {
+      flex-grow: 1;
     }
     .features {
       background: #fff;
@@ -122,7 +143,21 @@
     </select>
   </div>
 
-  <div id="map"></div>
+  <div class="main-container">
+    <div class="featured">
+      <h3>Featured Coaches</h3>
+      <div class="coach-card">
+        <strong>Jamie</strong><br>Strength · In-Person · Melbourne
+      </div>
+      <div class="coach-card">
+        <strong>Taylor</strong><br>Mobility · Online · Sydney
+      </div>
+      <div class="coach-card">
+        <strong>Alex</strong><br>HIIT · In-Person · Brisbane
+      </div>
+    </div>
+    <div id="map"></div>
+  </div>
 
   <section class="features">
     <h2>Why Coaches Love HAFC</h2>
@@ -162,6 +197,59 @@
   </footer>
 
   <script>
+    const mapStyle = [
+      {
+        featureType: "all",
+        elementType: "geometry.fill",
+        stylers: [{ weight: "2.00" }]
+      },
+      {
+        featureType: "all",
+        elementType: "geometry.stroke",
+        stylers: [{ color: "#9c9c9c" }]
+      },
+      {
+        featureType: "all",
+        elementType: "labels.text",
+        stylers: [{ visibility: "on" }]
+      },
+      {
+        featureType: "landscape",
+        elementType: "all",
+        stylers: [{ color: "#f2f2f2" }]
+      },
+      {
+        featureType: "poi",
+        elementType: "all",
+        stylers: [{ visibility: "off" }]
+      },
+      {
+        featureType: "road",
+        elementType: "all",
+        stylers: [{ saturation: -100 }, { lightness: 45 }]
+      },
+      {
+        featureType: "road.highway",
+        elementType: "all",
+        stylers: [{ visibility: "simplified" }]
+      },
+      {
+        featureType: "road.arterial",
+        elementType: "labels.icon",
+        stylers: [{ visibility: "off" }]
+      },
+      {
+        featureType: "transit",
+        elementType: "all",
+        stylers: [{ visibility: "off" }]
+      },
+      {
+        featureType: "water",
+        elementType: "all",
+        stylers: [{ color: "#c0e4f3" }, { visibility: "on" }]
+      }
+    ];
+
     const coaches = [
       { name: "Jamie", lat: -37.8136, lng: 144.9631, type: "In-Person", specialty: "Strength" },
       { name: "Taylor", lat: -33.8688, lng: 151.2093, type: "Online", specialty: "Mobility" },
@@ -176,6 +264,7 @@
       map = new google.maps.Map(document.getElementById("map"), {
         zoom: 5,
         center: center,
+        styles: mapStyle
       });
       loadMarkers(coaches);
     }
