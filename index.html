@@ -5,43 +5,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HAFC - Your Link to Better Health</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
     body, html {
       margin: 0;
       padding: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #f9f9f9;
       color: #333;
       height: 100%;
     }
     header {
       background: #fff;
-      padding: 20px;
+      padding: 30px 20px;
       text-align: center;
       border-bottom: 1px solid #ddd;
     }
     h1 {
       margin: 0;
-      font-size: 2.2em;
+      font-size: 2.5em;
     }
     p {
-      margin: 5px 0 15px;
-      font-size: 1em;
+      margin: 10px 0 0;
+      font-size: 1.1em;
       color: #666;
     }
     .filters {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 10px;
+      gap: 15px;
       padding: 20px;
       background: #ffffff;
       border-bottom: 1px solid #ddd;
     }
     .filters select, .filters input[type="text"] {
-      padding: 10px;
+      padding: 12px;
       border: 1px solid #ccc;
-      border-radius: 5px;
+      border-radius: 8px;
       font-size: 1em;
+      width: 200px;
     }
     .main-container {
       display: flex;
@@ -57,13 +61,20 @@
     }
     .featured h3 {
       margin-top: 0;
+      font-size: 1.4em;
     }
     .coach-card {
-      border-bottom: 1px solid #ddd;
-      padding: 10px 0;
+      background: #fdfdfd;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      padding: 15px;
+      margin-bottom: 15px;
+      text-align: left;
     }
-    .coach-card:last-child {
-      border-bottom: none;
+    .coach-card strong {
+      font-size: 1.1em;
+      display: block;
+      margin-bottom: 5px;
     }
     #map {
       flex-grow: 1;
@@ -97,14 +108,16 @@
       border-top: 1px solid #ddd;
     }
     input[type="email"] {
-      padding: 10px;
+      padding: 12px;
       font-size: 1em;
       width: 300px;
       max-width: 90%;
       margin-top: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
     }
     input[type="submit"] {
-      padding: 10px 20px;
+      padding: 12px 24px;
       font-size: 1em;
       margin-top: 10px;
       background: #2c9f9f;
@@ -119,6 +132,21 @@
       text-align: center;
       font-size: 0.9em;
       margin-top: 40px;
+    }
+
+    @media (max-width: 768px) {
+      .main-container {
+        flex-direction: column;
+        height: auto;
+      }
+      .featured {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #eee;
+      }
+      #map {
+        height: 400px;
+      }
     }
   </style>
 </head>
@@ -147,13 +175,16 @@
     <div class="featured">
       <h3>Featured Coaches</h3>
       <div class="coach-card">
-        <strong>Jamie</strong><br>Strength · In-Person · Melbourne
+        <strong>Jamie</strong>
+        Strength · In-Person · Melbourne
       </div>
       <div class="coach-card">
-        <strong>Taylor</strong><br>Mobility · Online · Sydney
+        <strong>Taylor</strong>
+        Mobility · Online · Sydney
       </div>
       <div class="coach-card">
-        <strong>Alex</strong><br>HIIT · In-Person · Brisbane
+        <strong>Alex</strong>
+        HIIT · In-Person · Brisbane
       </div>
     </div>
     <div id="map"></div>
@@ -209,11 +240,6 @@
         stylers: [{ color: "#9c9c9c" }]
       },
       {
-        featureType: "all",
-        elementType: "labels.text",
-        stylers: [{ visibility: "on" }]
-      },
-      {
         featureType: "landscape",
         elementType: "all",
         stylers: [{ color: "#f2f2f2" }]
@@ -227,21 +253,6 @@
         featureType: "road",
         elementType: "all",
         stylers: [{ saturation: -100 }, { lightness: 45 }]
-      },
-      {
-        featureType: "road.highway",
-        elementType: "all",
-        stylers: [{ visibility: "simplified" }]
-      },
-      {
-        featureType: "road.arterial",
-        elementType: "labels.icon",
-        stylers: [{ visibility: "off" }]
-      },
-      {
-        featureType: "transit",
-        elementType: "all",
-        stylers: [{ visibility: "off" }]
       },
       {
         featureType: "water",
