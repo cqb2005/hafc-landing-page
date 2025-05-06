@@ -1,46 +1,57 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>HAFC - Your Link to Better Health</title>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HAFC - Your Link to Better Health</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
+    body, html {
       margin: 0;
       padding: 0;
-      background: #f9f9f9;
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
       color: #333;
-      text-align: center;
+      height: 100%;
     }
     header {
-      padding: 60px 20px;
       background: #fff;
+      padding: 20px;
+      text-align: center;
       border-bottom: 1px solid #ddd;
     }
     h1 {
       margin: 0;
-      font-size: 2.5em;
+      font-size: 2.2em;
     }
     p {
-      font-size: 1.2em;
-      margin-top: 10px;
+      margin: 5px 0 15px;
+      font-size: 1em;
       color: #666;
     }
-    .cta {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 15px 30px;
-      background: #2c9f9f;
-      color: white;
-      text-decoration: none;
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      padding: 20px;
+      background: #ffffff;
+      border-bottom: 1px solid #ddd;
+    }
+    .filters select, .filters input[type="text"] {
+      padding: 10px;
+      border: 1px solid #ccc;
       border-radius: 5px;
       font-size: 1em;
+    }
+    #map {
+      width: 100%;
+      height: 70vh;
     }
     .features {
       background: #fff;
       padding: 60px 20px;
       border-top: 1px solid #eee;
+      text-align: center;
     }
     .feature-boxes {
       display: flex;
@@ -56,6 +67,7 @@
       background: #f1f1f1;
       padding: 40px 20px;
       margin-top: 40px;
+      text-align: center;
     }
     .signup-form {
       background: #ffffff;
@@ -83,6 +95,7 @@
     footer {
       padding: 20px;
       background: #eee;
+      text-align: center;
       font-size: 0.9em;
       margin-top: 40px;
     }
@@ -92,8 +105,24 @@
   <header>
     <h1>HAFC</h1>
     <p>Your Link to Better Health</p>
-    <a href="map.html" class="cta">View Coach Map</a>
   </header>
+
+  <div class="filters">
+    <input type="text" placeholder="Search by location" id="search-location">
+    <select id="training-type">
+      <option value="">Training Style</option>
+      <option value="Strength">Strength</option>
+      <option value="Mobility">Mobility</option>
+      <option value="HIIT">HIIT</option>
+    </select>
+    <select id="availability">
+      <option value="">Availability</option>
+      <option value="online">Online</option>
+      <option value="in-person">In-Person</option>
+    </select>
+  </div>
+
+  <div id="map"></div>
 
   <section class="features">
     <h2>Why Coaches Love HAFC</h2>
@@ -131,5 +160,66 @@
   <footer>
     &copy; 2025 HAFC. All rights reserved.
   </footer>
+
+  <script>
+    const coaches = [
+      { name: "Jamie", lat: -37.8136, lng: 144.9631, type: "In-Person", specialty: "Strength" },
+      { name: "Taylor", lat: -33.8688, lng: 151.2093, type: "Online", specialty: "Mobility" },
+      { name: "Alex", lat: -27.4698, lng: 153.0251, type: "In-Person", specialty: "HIIT" }
+    ];
+
+    let map;
+    let markers = [];
+
+    function initMap() {
+      const center = { lat: -33.8688, lng: 151.2093 };
+      map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 5,
+        center: center,
+      });
+      loadMarkers(coaches);
+    }
+
+    function loadMarkers(data) {
+      markers.forEach(marker => marker.setMap(null));
+      markers = [];
+
+      data.forEach(coach => {
+        const marker = new google.maps.Marker({
+          position: { lat: coach.lat, lng: coach.lng },
+          map: map,
+          title: coach.name,
+        });
+
+        const info = new google.maps.InfoWindow({
+          content: `<strong>${coach.name}</strong><br>${coach.specialty}<br>${coach.type}`
+        });
+
+        marker.addListener("click", () => {
+          info.open(map, marker);
+        });
+
+        markers.push(marker);
+      });
+    }
+
+    document.querySelectorAll("#search-location, #training-type, #availability").forEach(el => {
+      el.addEventListener("input", () => {
+        const type = document.getElementById("training-type").value;
+        const avail = document.getElementById("availability").value;
+
+        const filtered = coaches.filter(coach => {
+          return (!type || coach.specialty === type) &&
+                 (!avail || coach.type.toLowerCase() === avail);
+        });
+
+        loadMarkers(filtered);
+      });
+    });
+  </script>
+
+  <script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWxrse2bAtAkZdXOhJN8xpufWmQgjs8m8&callback=initMap">
+  </script>
 </body>
 </html>
