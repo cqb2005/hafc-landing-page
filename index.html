@@ -152,12 +152,13 @@
     <label for="search-location">📍 Location</label>
     <input type="text" id="search-location" placeholder="Enter a city">
 
-    <label for="training-type">🏋️‍♂️ Style</label>
-    <select id="training-type">
+    <label for="health-type">👩‍⚕️ Health Professional</label>
+    <select id="health-type">
       <option value="">Any</option>
-      <option value="Strength">Strength</option>
-      <option value="Mobility">Mobility</option>
-      <option value="HIIT">HIIT</option>
+      <option value="Personal Trainer">Personal Trainer</option>
+      <option value="Physiotherapist">Physiotherapist</option>
+      <option value="Dietitian">Dietitian</option>
+      <option value="Psychologist">Psychologist</option>
     </select>
 
     <label for="availability">🕒 Availability</label>
@@ -171,9 +172,9 @@
   <div class="main-container">
     <div class="featured">
       <h3>Featured Coaches</h3>
-      <div class="coach-card"><strong>Jamie</strong><br>Strength · In-Person · Melbourne</div>
-      <div class="coach-card"><strong>Taylor</strong><br>Mobility · Online · Sydney</div>
-      <div class="coach-card"><strong>Alex</strong><br>HIIT · In-Person · Brisbane</div>
+      <div class="coach-card"><strong>Jamie</strong><br>Personal Trainer · In-Person · Melbourne</div>
+      <div class="coach-card"><strong>Taylor</strong><br>Physiotherapist · Online · Sydney</div>
+      <div class="coach-card"><strong>Alex</strong><br>Dietitian · In-Person · Brisbane</div>
     </div>
     <div id="map"></div>
   </div>
@@ -227,9 +228,9 @@
     ];
 
     const coaches = [
-      { name: "Jamie", lat: -37.8136, lng: 144.9631, type: "In-Person", specialty: "Strength" },
-      { name: "Taylor", lat: -33.8688, lng: 151.2093, type: "Online", specialty: "Mobility" },
-      { name: "Alex", lat: -27.4698, lng: 153.0251, type: "In-Person", specialty: "HIIT" }
+      { name: "Jamie", lat: -37.8136, lng: 144.9631, type: "In-Person", specialty: "Personal Trainer" },
+      { name: "Taylor", lat: -33.8688, lng: 151.2093, type: "Online", specialty: "Physiotherapist" },
+      { name: "Alex", lat: -27.4698, lng: 153.0251, type: "In-Person", specialty: "Dietitian" }
     ];
 
     let map;
@@ -268,9 +269,9 @@
       });
     }
 
-    document.querySelectorAll("#search-location, #training-type, #availability").forEach(el => {
+    document.querySelectorAll("#search-location, #health-type, #availability").forEach(el => {
       el.addEventListener("input", () => {
-        const type = document.getElementById("training-type").value;
+        const type = document.getElementById("health-type").value;
         const avail = document.getElementById("availability").value;
 
         const filtered = coaches.filter(coach => {
