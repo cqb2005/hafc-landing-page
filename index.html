@@ -3,74 +3,51 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>HAFC - Your Link to Better Health</title>
+  <title>HAFC</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
     body, html {
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Segoe UI', sans-serif;
       background-color: #fbf9f8;
       color: #333;
     }
 
     header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
       background-color: #fbf9f8;
-      padding: 20px 40px;
-      border-bottom: 1px solid #ddd;
-      flex-wrap: wrap;
-    }
-
-    .header-text {
-      flex: 1;
-      min-width: 200px;
-      text-align: left;
-    }
-
-    .header-text h1 {
-      margin: 0;
-      font-size: 2.2em;
-    }
-
-    .header-text p {
-      margin: 5px 0 0;
-      font-size: 1.1em;
-      color: #666;
-    }
-
-    .header-logo {
-      flex: 1;
+      padding: 30px 0;
       text-align: center;
+      border-bottom: 1px solid #ddd;
     }
 
-    .header-logo img {
+    header img {
       width: 160px;
       height: auto;
     }
 
     .filters {
+      background: #ffffff;
+      padding: 20px;
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
       gap: 15px;
-      padding: 20px;
-      background: #ffffff;
+      justify-content: center;
+      align-items: center;
       border-bottom: 1px solid #ddd;
     }
 
-    .filters select,
-    .filters input[type="text"] {
-      padding: 12px;
+    .filters label {
+      font-weight: 500;
+      margin-right: 5px;
+    }
+
+    .filters input[type="text"],
+    .filters select {
+      padding: 10px;
       border: 1px solid #ccc;
-      border-radius: 8px;
+      border-radius: 6px;
       font-size: 1em;
-      width: 200px;
+      width: 220px;
     }
 
     .main-container {
@@ -88,8 +65,7 @@
     }
 
     .featured h3 {
-      margin-top: 0;
-      font-size: 1.4em;
+      font-size: 1.2em;
     }
 
     .coach-card {
@@ -98,34 +74,23 @@
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
       padding: 15px;
       margin-bottom: 15px;
-      text-align: left;
-    }
-
-    .coach-card strong {
-      font-size: 1.1em;
-      display: block;
-      margin-bottom: 5px;
     }
 
     #map {
       flex-grow: 1;
     }
 
-    .features,
-    .testimonial,
-    .signup-form,
-    footer {
+    .features, .testimonial, .signup-form, footer {
+      padding: 40px 20px;
       background: #ffffff;
       text-align: center;
-      padding: 40px 20px;
     }
 
     .feature-boxes {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 40px;
-      margin-top: 30px;
+      gap: 30px;
     }
 
     .feature {
@@ -160,15 +125,6 @@
     }
 
     @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .header-logo {
-        margin-bottom: 10px;
-      }
-
       .main-container {
         flex-direction: column;
         height: auto;
@@ -189,25 +145,24 @@
 <body>
 
   <header>
-    <div class="header-text">
-      <h1>HAFC</h1>
-      <p>Your Link to Better Health</p>
-    </div>
-    <div class="header-logo">
-      <img src="logo.png" alt="HAFC Logo">
-    </div>
+    <img src="logo.png" alt="HAFC Logo" />
   </header>
 
   <div class="filters">
-    <input type="text" placeholder="Search by location" id="search-location">
+    <label for="search-location">📍 Location</label>
+    <input type="text" id="search-location" placeholder="Enter a city">
+
+    <label for="training-type">🏋️‍♂️ Style</label>
     <select id="training-type">
-      <option value="">Training Style</option>
+      <option value="">Any</option>
       <option value="Strength">Strength</option>
       <option value="Mobility">Mobility</option>
       <option value="HIIT">HIIT</option>
     </select>
+
+    <label for="availability">🕒 Availability</label>
     <select id="availability">
-      <option value="">Availability</option>
+      <option value="">Any</option>
       <option value="online">Online</option>
       <option value="in-person">In-Person</option>
     </select>
@@ -216,9 +171,9 @@
   <div class="main-container">
     <div class="featured">
       <h3>Featured Coaches</h3>
-      <div class="coach-card"><strong>Jamie</strong>Strength · In-Person · Melbourne</div>
-      <div class="coach-card"><strong>Taylor</strong>Mobility · Online · Sydney</div>
-      <div class="coach-card"><strong>Alex</strong>HIIT · In-Person · Brisbane</div>
+      <div class="coach-card"><strong>Jamie</strong><br>Strength · In-Person · Melbourne</div>
+      <div class="coach-card"><strong>Taylor</strong><br>Mobility · Online · Sydney</div>
+      <div class="coach-card"><strong>Alex</strong><br>HIIT · In-Person · Brisbane</div>
     </div>
     <div id="map"></div>
   </div>
@@ -327,6 +282,7 @@
       });
     });
   </script>
+
   <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWxrse2bAtAkZdXOhJN8xpufWmQgjs8m8&callback=initMap"></script>
 
 </body>
