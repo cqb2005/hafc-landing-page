@@ -2,39 +2,58 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>HAFC - Your Link to Better Health</title>
   <style>
     * {
       box-sizing: border-box;
     }
+
     body, html {
       margin: 0;
       padding: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f9f9f9;
+      background-color: #fbf9f8;
       color: #333;
-      height: 100%;
     }
+
     header {
-      background: #fff;
-      padding: 30px 20px;
-      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #fbf9f8;
+      padding: 20px 40px;
       border-bottom: 1px solid #ddd;
+      flex-wrap: wrap;
     }
-    header img {
-      width: 120px;
-      margin-bottom: 10px;
+
+    .header-text {
+      flex: 1;
+      min-width: 200px;
+      text-align: left;
     }
-    h1 {
+
+    .header-text h1 {
       margin: 0;
-      font-size: 2.5em;
+      font-size: 2.2em;
     }
-    p {
-      margin: 10px 0 0;
+
+    .header-text p {
+      margin: 5px 0 0;
       font-size: 1.1em;
       color: #666;
     }
+
+    .header-logo {
+      flex: 1;
+      text-align: center;
+    }
+
+    .header-logo img {
+      width: 160px;
+      height: auto;
+    }
+
     .filters {
       display: flex;
       flex-wrap: wrap;
@@ -44,18 +63,22 @@
       background: #ffffff;
       border-bottom: 1px solid #ddd;
     }
-    .filters select, .filters input[type="text"] {
+
+    .filters select,
+    .filters input[type="text"] {
       padding: 12px;
       border: 1px solid #ccc;
       border-radius: 8px;
       font-size: 1em;
       width: 200px;
     }
+
     .main-container {
       display: flex;
       flex-direction: row;
       height: 70vh;
     }
+
     .featured {
       width: 22%;
       background: #ffffff;
@@ -63,10 +86,12 @@
       border-right: 1px solid #eee;
       padding: 20px;
     }
+
     .featured h3 {
       margin-top: 0;
       font-size: 1.4em;
     }
+
     .coach-card {
       background: #fdfdfd;
       border-radius: 10px;
@@ -75,42 +100,38 @@
       margin-bottom: 15px;
       text-align: left;
     }
+
     .coach-card strong {
       font-size: 1.1em;
       display: block;
       margin-bottom: 5px;
     }
+
     #map {
       flex-grow: 1;
     }
-    .features {
-      background: #fff;
-      padding: 60px 20px;
-      border-top: 1px solid #eee;
+
+    .features,
+    .testimonial,
+    .signup-form,
+    footer {
+      background: #ffffff;
       text-align: center;
+      padding: 40px 20px;
     }
+
     .feature-boxes {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 40px;
-      margin-top: 40px;
+      margin-top: 30px;
     }
+
     .feature {
       max-width: 220px;
     }
-    .testimonial {
-      background: #f1f1f1;
-      padding: 40px 20px;
-      margin-top: 40px;
-      text-align: center;
-    }
-    .signup-form {
-      background: #ffffff;
-      padding: 40px 20px;
-      text-align: center;
-      border-top: 1px solid #ddd;
-    }
+
     input[type="email"] {
       padding: 12px;
       font-size: 1em;
@@ -120,6 +141,7 @@
       border-radius: 6px;
       border: 1px solid #ccc;
     }
+
     input[type="submit"] {
       padding: 12px 24px;
       font-size: 1em;
@@ -130,23 +152,34 @@
       border-radius: 5px;
       cursor: pointer;
     }
+
     footer {
-      padding: 20px;
-      background: #eee;
-      text-align: center;
+      background: #fbf9f8;
       font-size: 0.9em;
-      margin-top: 40px;
+      color: #666;
     }
+
     @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .header-logo {
+        margin-bottom: 10px;
+      }
+
       .main-container {
         flex-direction: column;
         height: auto;
       }
+
       .featured {
         width: 100%;
         border-right: none;
         border-bottom: 1px solid #eee;
       }
+
       #map {
         height: 400px;
       }
@@ -154,10 +187,15 @@
   </style>
 </head>
 <body>
+
   <header>
-    <img src="logo.png" alt="HAFC Logo" />
-    <h1>HAFC</h1>
-    <p>Your Link to Better Health</p>
+    <div class="header-text">
+      <h1>HAFC</h1>
+      <p>Your Link to Better Health</p>
+    </div>
+    <div class="header-logo">
+      <img src="logo.png" alt="HAFC Logo">
+    </div>
   </header>
 
   <div class="filters">
@@ -178,18 +216,9 @@
   <div class="main-container">
     <div class="featured">
       <h3>Featured Coaches</h3>
-      <div class="coach-card">
-        <strong>Jamie</strong>
-        Strength · In-Person · Melbourne
-      </div>
-      <div class="coach-card">
-        <strong>Taylor</strong>
-        Mobility · Online · Sydney
-      </div>
-      <div class="coach-card">
-        <strong>Alex</strong>
-        HIIT · In-Person · Brisbane
-      </div>
+      <div class="coach-card"><strong>Jamie</strong>Strength · In-Person · Melbourne</div>
+      <div class="coach-card"><strong>Taylor</strong>Mobility · Online · Sydney</div>
+      <div class="coach-card"><strong>Alex</strong>HIIT · In-Person · Brisbane</div>
     </div>
     <div id="map"></div>
   </div>
@@ -219,7 +248,6 @@
 
   <section class="signup-form">
     <h2>Join Our Coach Network</h2>
-    <p>Be among the first to experience the future of health and fitness connection.</p>
     <form>
       <input type="email" placeholder="Enter your email" required>
       <br>
@@ -233,12 +261,14 @@
 
   <script>
     const mapStyle = [
-      { featureType: "all", elementType: "geometry.fill", stylers: [{ weight: "2.00" }] },
-      { featureType: "all", elementType: "geometry.stroke", stylers: [{ color: "#9c9c9c" }] },
-      { featureType: "landscape", elementType: "all", stylers: [{ color: "#f2f2f2" }] },
-      { featureType: "poi", elementType: "all", stylers: [{ visibility: "off" }] },
-      { featureType: "road", elementType: "all", stylers: [{ saturation: -100 }, { lightness: 45 }] },
-      { featureType: "water", elementType: "all", stylers: [{ color: "#c0e4f3" }, { visibility: "on" }] }
+      { "elementType": "geometry", "stylers": [{ "color": "#f5f5f5" }] },
+      { "elementType": "labels.icon", "stylers": [{ "visibility": "off" }] },
+      { "elementType": "labels.text.fill", "stylers": [{ "color": "#616161" }] },
+      { "elementType": "labels.text.stroke", "stylers": [{ "color": "#f5f5f5" }] },
+      { "featureType": "poi", "elementType": "geometry", "stylers": [{ "color": "#eeeeee" }] },
+      { "featureType": "poi.park", "elementType": "geometry", "stylers": [{ "color": "#e5e5e5" }] },
+      { "featureType": "road", "elementType": "geometry", "stylers": [{ "color": "#ffffff" }] },
+      { "featureType": "water", "elementType": "geometry", "stylers": [{ "color": "#c9c9c9" }] }
     ];
 
     const coaches = [
@@ -298,652 +328,6 @@
     });
   </script>
   <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWxrse2bAtAkZdXOhJN8xpufWmQgjs8m8&callback=initMap"></script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HAFC - Your Link to Better Health</title>
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-    body, html {
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f1f5f9;
-      color: #333;
-      height: 100%;
-    }
-    header {
-      background: #ffffff;
-      padding: 20px 40px;
-      display: flex;
-      align-items: center;
-      border-bottom: 1px solid #ddd;
-    }
-    header img {
-      width: 160px;
-      margin-right: 20px;
-    }
-    .header-text {
-      text-align: left;
-    }
-    .header-text h1 {
-      margin: 0;
-      font-size: 2.2em;
-    }
-    .header-text p {
-      margin: 5px 0 0;
-      font-size: 1.1em;
-      color: #666;
-    }
-    .filters {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      padding: 20px;
-      background: #ffffff;
-      border-bottom: 1px solid #ddd;
-    }
-    .filters select, .filters input[type="text"] {
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 1em;
-      width: 200px;
-    }
-    .main-container {
-      display: flex;
-      flex-direction: row;
-      height: 70vh;
-    }
-    .featured {
-      width: 22%;
-      background: #ffffff;
-      overflow-y: auto;
-      border-right: 1px solid #eee;
-      padding: 20px;
-    }
-    .featured h3 {
-      margin-top: 0;
-      font-size: 1.4em;
-    }
-    .coach-card {
-      background: #fdfdfd;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-      padding: 15px;
-      margin-bottom: 15px;
-      text-align: left;
-    }
-    .coach-card strong {
-      font-size: 1.1em;
-      display: block;
-      margin-bottom: 5px;
-    }
-    #map {
-      flex-grow: 1;
-    }
-    .features {
-      background: #fff;
-      padding: 60px 20px;
-      border-top: 1px solid #eee;
-      text-align: center;
-    }
-    .feature-boxes {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 40px;
-      margin-top: 40px;
-    }
-    .feature {
-      max-width: 220px;
-    }
-    .testimonial {
-      background: #f1f1f1;
-      padding: 40px 20px;
-      margin-top: 40px;
-      text-align: center;
-    }
-    .signup-form {
-      background: #ffffff;
-      padding: 40px 20px;
-      text-align: center;
-      border-top: 1px solid #ddd;
-    }
-    input[type="email"] {
-      padding: 12px;
-      font-size: 1em;
-      width: 300px;
-      max-width: 90%;
-      margin-top: 10px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-    }
-    input[type="submit"] {
-      padding: 12px 24px;
-      font-size: 1em;
-      margin-top: 10px;
-      background: #2c9f9f;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    footer {
-      padding: 20px;
-      background: #eee;
-      text-align: center;
-      font-size: 0.9em;
-      margin-top: 40px;
-    }
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        text-align: center;
-      }
-      header img {
-        margin-bottom: 10px;
-      }
-      .main-container {
-        flex-direction: column;
-        height: auto;
-      }
-      .featured {
-        width: 100%;
-        border-right: none;
-        border-bottom: 1px solid #eee;
-      }
-      #map {
-        height: 400px;
-      }
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <img src="logo.png" alt="HAFC Logo" />
-    <div class="header-text">
-      <h1>HAFC</h1>
-      <p>Your Link to Better Health</p>
-    </div>
-  </header>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>HAFC - Your Link to Better Health</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Arial', sans-serif;
-      background-color: #eef3f7;
-      color: #333;
-    }
-
-    header {
-      background-color: #eef3f7;
-      padding: 20px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
-
-    .header-text {
-      flex: 1;
-      min-width: 200px;
-    }
-
-    .header-text h1 {
-      margin: 0;
-      font-size: 2em;
-    }
-
-    .header-text p {
-      margin: 5px 0 0;
-      font-size: 1em;
-      color: #666;
-    }
-
-    .header-logo {
-      flex: 1;
-      text-align: center;
-    }
-
-    .header-logo img {
-      width: 160px;
-      height: auto;
-    }
-
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-      min-height: 600px;
-    }
-
-    .featured {
-      width: 22%;
-      background-color: #fff;
-      padding: 20px;
-      box-shadow: inset -1px 0 0 #ddd;
-      overflow-y: auto;
-    }
-
-    .map-container {
-      width: 78%;
-      height: 600px;
-    }
-
-    #map {
-      width: 100%;
-      height: 100%;
-    }
-
-    .filter-bar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      padding: 20px 40px;
-      background-color: #fff;
-      border-top: 1px solid #ccc;
-      border-bottom: 1px solid #ccc;
-    }
-
-    .filter-bar select {
-      padding: 8px 12px;
-      font-size: 1em;
-    }
-
-    .feature-section, .testimonial, .signup-form, footer {
-      padding: 40px;
-      background: #fff;
-      text-align: center;
-    }
-
-    .feature-boxes {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 30px;
-      margin-top: 30px;
-    }
-
-    .feature {
-      max-width: 220px;
-    }
-
-    .signup-form input[type="email"] {
-      padding: 10px;
-      font-size: 1em;
-      width: 300px;
-      max-width: 90%;
-      margin: 10px auto;
-    }
-
-    .signup-form input[type="submit"] {
-      padding: 10px 20px;
-      background-color: #2c9f9f;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-top: 10px;
-    }
-
-    footer {
-      background-color: #eef3f7;
-      font-size: 0.9em;
-      color: #666;
-    }
-
-    @media (max-width: 768px) {
-      .container {
-        flex-direction: column;
-      }
-
-      .featured, .map-container {
-        width: 100%;
-        height: 300px;
-      }
-
-      .header-logo, .header-text {
-        text-align: center;
-        width: 100%;
-        margin-bottom: 10px;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <header>
-    <div class="header-text">
-      <h1>HAFC</h1>
-      <p>Your Link to Better Health</p>
-    </div>
-    <div class="header-logo">
-      <img src="logo.png" alt="HAFC Logo">
-    </div>
-  </header>
-
-  <div class="filter-bar">
-    <select>
-      <option>Location</option>
-      <option>Sydney</option>
-      <option>Melbourne</option>
-      <option>Brisbane</option>
-    </select>
-    <select>
-      <option>Style</option>
-      <option>Strength</option>
-      <option>Mobility</option>
-      <option>HIIT</option>
-    </select>
-    <select>
-      <option>Availability</option>
-      <option>Morning</option>
-      <option>Afternoon</option>
-      <option>Evening</option>
-    </select>
-  </div>
-
-  <div class="container">
-    <div class="featured">
-      <h3>Featured Coaches</h3>
-      <ul>
-        <li><strong>Jamie</strong><br>Strength – Melbourne</li>
-        <li><strong>Taylor</strong><br>Mobility – Sydney</li>
-        <li><strong>Alex</strong><br>HIIT – Brisbane</li>
-      </ul>
-    </div>
-    <div class="map-container">
-      <div id="map"></div>
-    </div>
-  </div>
-
-  <section class="feature-section">
-    <h2>Why Coaches Love HAFC</h2>
-    <div class="feature-boxes">
-      <div class="feature">
-        <h3>📍 Location-Based Discovery</h3>
-        <p>Get discovered by clients near you—or anywhere online.</p>
-      </div>
-      <div class="feature">
-        <h3>💬 Instant Bookings</h3>
-        <p>Clients can view your calendar and book you instantly.</p>
-      </div>
-      <div class="feature">
-        <h3>🧰 Built for Coaches</h3>
-        <p>Zero setup costs, just sign up and start getting clients.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="testimonial">
-    <h2>What Coaches Are Saying</h2>
-    <p>"HAFC helped me grow my client base faster than anything else I've tried. The platform is super easy to use and my clients love it too!" – Jamie, PT in Melbourne</p>
-  </section>
-
-  <section class="signup-form">
-    <h2>Join Our Coach Network</h2>
-    <form>
-      <input type="email" placeholder="Enter your email" required>
-      <br>
-      <input type="submit" value="Sign Up Now">
-    </form>
-  </section>
-
-  <footer>
-    &copy; 2025 HAFC. All rights reserved.
-  </footer>
-
-  <script>
-    const mapStyle = [
-      { "elementType": "geometry", "stylers": [{ "color": "#f5f5f5" }] },
-      { "elementType": "labels.icon", "stylers": [{ "visibility": "off" }] },
-      { "elementType": "labels.text.fill", "stylers": [{ "color": "#616161" }] },
-      { "elementType": "labels.text.stroke", "stylers": [{ "color": "#f5f5f5" }] },
-      { "featureType": "administrative.land_parcel", "elementType": "labels", "stylers": [{ "visibility": "off" }] },
-      { "featureType": "poi", "elementType": "geometry", "stylers": [{ "color": "#eeeeee" }] },
-      { "featureType": "poi", "elementType": "labels.text.fill", "stylers": [{ "color": "#757575" }] },
-      { "featureType": "poi.park", "elementType": "geometry", "stylers": [{ "color": "#e5e5e5" }] },
-      { "featureType": "poi.park", "elementType": "labels.text.fill", "stylers": [{ "color": "#9e9e9e" }] },
-      { "featureType": "road", "elementType": "geometry", "stylers": [{ "color": "#ffffff" }] },
-      { "featureType": "road.arterial", "elementType": "labels.text.fill", "stylers": [{ "color": "#757575" }] },
-      { "featureType": "road.highway", "elementType": "geometry", "stylers": [{ "color": "#dadada" }] },
-      { "featureType": "road.highway", "elementType": "labels.text.fill", "stylers": [{ "color": "#616161" }] },
-      { "featureType": "road.local", "elementType": "labels.text.fill", "stylers": [{ "color": "#9e9e9e" }] },
-      { "featureType": "transit.line", "elementType": "geometry", "stylers": [{ "color": "#e5e5e5" }] },
-      { "featureType": "transit.station", "elementType": "geometry", "stylers": [{ "color": "#eeeeee" }] },
-      { "featureType": "water", "elementType": "geometry", "stylers": [{ "color": "#c9c9c9" }] },
-      { "featureType": "water", "elementType": "labels.text.fill", "stylers": [{ "color": "#9e9e9e" }] }
-    ];
-
-    function initMap() {
-      const center = { lat: -33.8688, lng: 151.2093 };
-      const map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 5,
-        center: center,
-        styles: mapStyle
-      });
-
-      const coaches = [
-        { name: "Jamie", lat: -37.8136, lng: 144.9631, type: "In-Person", specialty: "Strength" },
-        { name: "Taylor", lat: -33.8688, lng: 151.2093, type: "Online", specialty: "Mobility" },
-        { name: "Alex", lat: -27.4698, lng: 153.0251, type: "In-Person", specialty: "HIIT" }
-      ];
-
-      coaches.forEach(coach => {
-        const marker = new google.maps.Marker({
-          position: { lat: coach.lat, lng: coach.lng },
-          map: map,
-          title: coach.name
-        });
-
-        const info = new google.maps.InfoWindow({
-          content: `<strong>${coach.name}</strong><br>${coach.specialty}<br>${coach.type}`
-        });
-
-        marker.addListener("click", () => {
-          info.open(map, marker);
-        });
-      });
-    }
-  </script>
-
-  <script async
-    src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap">
-  </script>
 
 </body>
 </html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HAFC - Your Link to Better Health</title>
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-    body, html {
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #eef3f7;
-      color: #333;
-      height: 100%;
-    }
-    header {
-      background: #ffffff;
-      padding: 20px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid #ddd;
-    }
-    .header-text {
-      text-align: left;
-    }
-    .header-text h1 {
-      margin: 0;
-      font-size: 2.2em;
-    }
-    .header-text p {
-      margin: 5px 0 0;
-      font-size: 1.1em;
-      color: #666;
-    }
-    .header-logo {
-      text-align: center;
-      flex-grow: 1;
-    }
-    .header-logo img {
-      width: 160px;
-      display: block;
-      margin: 0 auto;
-    }
-    .filters {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      padding: 20px;
-      background: #ffffff;
-      border-bottom: 1px solid #ddd;
-    }
-    .filters select, .filters input[type="text"] {
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 1em;
-      width: 200px;
-    }
-    .main-container {
-      display: flex;
-      flex-direction: row;
-      height: 70vh;
-    }
-    .featured {
-      width: 22%;
-      background: #ffffff;
-      overflow-y: auto;
-      border-right: 1px solid #eee;
-      padding: 20px;
-    }
-    .featured h3 {
-      margin-top: 0;
-      font-size: 1.4em;
-    }
-    .coach-card {
-      background: #fdfdfd;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-      padding: 15px;
-      margin-bottom: 15px;
-      text-align: left;
-    }
-    .coach-card strong {
-      font-size: 1.1em;
-      display: block;
-      margin-bottom: 5px;
-    }
-    #map {
-      flex-grow: 1;
-    }
-    .features {
-      background: #fff;
-      padding: 60px 20px;
-      border-top: 1px solid #eee;
-      text-align: center;
-    }
-    .feature-boxes {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 40px;
-      margin-top: 40px;
-    }
-    .feature {
-      max-width: 220px;
-    }
-    .testimonial {
-      background: #f1f1f1;
-      padding: 40px 20px;
-      margin-top: 40px;
-      text-align: center;
-    }
-    .signup-form {
-      background: #ffffff;
-      padding: 40px 20px;
-      text-align: center;
-      border-top: 1px solid #ddd;
-    }
-    input[type="email"] {
-      padding: 12px;
-      font-size: 1em;
-      width: 300px;
-      max-width: 90%;
-      margin-top: 10px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-    }
-    input[type="submit"] {
-      padding: 12px 24px;
-      font-size: 1em;
-      margin-top: 10px;
-      background: #2c9f9f;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    footer {
-      padding: 20px;
-      background: #eee;
-      text-align: center;
-      font-size: 0.9em;
-      margin-top: 40px;
-    }
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        text-align: center;
-      }
-      .header-logo {
-        margin-bottom: 10px;
-      }
-      .main-container {
-        flex-direction: column;
-        height: auto;
-      }
-      .featured {
-        width: 100%;
-        border-right: none;
-        border-bottom: 1px solid #eee;
-      }
-      #map {
-        height: 400px;
-      }
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <div class="header-text">
-      <h1>HAFC</h1>
-      <p>Your Link to Better Health</p>
-    </div>
-    <div class="header-logo">
-      <img src="logo.png" alt="HAFC Logo" />
-    </div>
-  </header>
