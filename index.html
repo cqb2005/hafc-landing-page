@@ -300,3 +300,177 @@
   <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWxrse2bAtAkZdXOhJN8xpufWmQgjs8m8&callback=initMap"></script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HAFC - Your Link to Better Health</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f1f5f9;
+      color: #333;
+      height: 100%;
+    }
+    header {
+      background: #ffffff;
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+    }
+    header img {
+      width: 160px;
+      margin-right: 20px;
+    }
+    .header-text {
+      text-align: left;
+    }
+    .header-text h1 {
+      margin: 0;
+      font-size: 2.2em;
+    }
+    .header-text p {
+      margin: 5px 0 0;
+      font-size: 1.1em;
+      color: #666;
+    }
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      padding: 20px;
+      background: #ffffff;
+      border-bottom: 1px solid #ddd;
+    }
+    .filters select, .filters input[type="text"] {
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1em;
+      width: 200px;
+    }
+    .main-container {
+      display: flex;
+      flex-direction: row;
+      height: 70vh;
+    }
+    .featured {
+      width: 22%;
+      background: #ffffff;
+      overflow-y: auto;
+      border-right: 1px solid #eee;
+      padding: 20px;
+    }
+    .featured h3 {
+      margin-top: 0;
+      font-size: 1.4em;
+    }
+    .coach-card {
+      background: #fdfdfd;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      padding: 15px;
+      margin-bottom: 15px;
+      text-align: left;
+    }
+    .coach-card strong {
+      font-size: 1.1em;
+      display: block;
+      margin-bottom: 5px;
+    }
+    #map {
+      flex-grow: 1;
+    }
+    .features {
+      background: #fff;
+      padding: 60px 20px;
+      border-top: 1px solid #eee;
+      text-align: center;
+    }
+    .feature-boxes {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 40px;
+    }
+    .feature {
+      max-width: 220px;
+    }
+    .testimonial {
+      background: #f1f1f1;
+      padding: 40px 20px;
+      margin-top: 40px;
+      text-align: center;
+    }
+    .signup-form {
+      background: #ffffff;
+      padding: 40px 20px;
+      text-align: center;
+      border-top: 1px solid #ddd;
+    }
+    input[type="email"] {
+      padding: 12px;
+      font-size: 1em;
+      width: 300px;
+      max-width: 90%;
+      margin-top: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    input[type="submit"] {
+      padding: 12px 24px;
+      font-size: 1em;
+      margin-top: 10px;
+      background: #2c9f9f;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    footer {
+      padding: 20px;
+      background: #eee;
+      text-align: center;
+      font-size: 0.9em;
+      margin-top: 40px;
+    }
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+      header img {
+        margin-bottom: 10px;
+      }
+      .main-container {
+        flex-direction: column;
+        height: auto;
+      }
+      .featured {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #eee;
+      }
+      #map {
+        height: 400px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="HAFC Logo" />
+    <div class="header-text">
+      <h1>HAFC</h1>
+      <p>Your Link to Better Health</p>
+    </div>
+  </header>
