@@ -18,11 +18,30 @@
       padding: 30px 0;
       text-align: center;
       border-bottom: 1px solid #ddd;
+      position: relative;
     }
 
     header img {
       width: 220px;
       height: auto;
+    }
+
+    .login-button {
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      background-color: #2c9f9f;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.95em;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+    }
+
+    .login-button:hover {
+      background-color: #238b8b;
     }
 
     .filters {
@@ -53,7 +72,7 @@
     .main-container {
       display: flex;
       flex-direction: row;
-      : 70vh;
+      height: 70vh;
     }
 
     .featured {
@@ -141,11 +160,18 @@
       #map {
         height: 400px;
       }
+
+      .login-button {
+        position: static;
+        margin-top: 10px;
+      }
     }
   </style>
 </head>
 <body>
+
   <header>
+    <a href="#" class="login-button">Health Pro Login</a>
     <img src="logo.png" alt="HAFC Logo" />
   </header>
 
@@ -169,6 +195,7 @@
       <option value="in-person">In-Person</option>
     </select>
   </div>
+
   <div class="main-container">
     <div class="featured">
       <h3>Featured Coaches</h3>
@@ -178,6 +205,7 @@
     </div>
     <div id="map"></div>
   </div>
+
   <section class="features">
     <h2>Why Coaches Love HAFC</h2>
     <div class="feature-boxes">
@@ -213,6 +241,7 @@
   <footer>
     &copy; 2025 HAFC. All rights reserved.
   </footer>
+
   <script>
     const mapStyle = [
       { "elementType": "geometry", "stylers": [{ "color": "#f5f5f5" }] },
@@ -283,5 +312,6 @@
   </script>
 
   <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWxrse2bAtAkZdXOhJN8xpufWmQgjs8m8&callback=initMap"></script>
+
 </body>
 </html>
