@@ -97,6 +97,8 @@
 
     #map {
       flex-grow: 1;
+      height: 100%;
+      min-height: 400px;
     }
 
     .features,
@@ -244,14 +246,23 @@
 
   <script>
     const mapStyle = [
-      { "elementType": "geometry", "stylers": [{ "color": "#f5f5f5" }] },
-      { "elementType": "labels.icon", "stylers": [{ "visibility": "off" }] },
-      { "elementType": "labels.text.fill", "stylers": [{ "color": "#616161" }] },
-      { "elementType": "labels.text.stroke", "stylers": [{ "color": "#f5f5f5" }] },
-      { "featureType": "poi", "elementType": "geometry", "stylers": [{ "color": "#eeeeee" }] },
-      { "featureType": "poi.park", "elementType": "geometry", "stylers": [{ "color": "#e5e5e5" }] },
-      { "featureType": "road", "elementType": "geometry", "stylers": [{ "color": "#ffffff" }] },
-      { "featureType": "water", "elementType": "geometry", "stylers": [{ "color": "#c9c9c9" }] }
+      { elementType: "geometry", stylers: [{ color: "#fdfdfd" }] },
+      { elementType: "labels.icon", stylers: [{ visibility: "off" }] },
+      { elementType: "labels.text.fill", stylers: [{ color: "#444" }] },
+      { elementType: "labels.text.stroke", stylers: [{ color: "#fbf9f8" }] },
+      { featureType: "poi", stylers: [{ visibility: "off" }] },
+      { featureType: "poi.park", stylers: [{ visibility: "off" }] },
+      { featureType: "road", elementType: "geometry", stylers: [{ color: "#c0c0c0" }] },
+      { featureType: "road.arterial", stylers: [{ color: "#b0b0b0" }] },
+      { featureType: "road.highway", stylers: [{ color: "#999999" }] },
+      { featureType: "road.local", stylers: [{ color: "#d6d6d6" }] },
+      { featureType: "water", stylers: [{ visibility: "off" }] },
+      { featureType: "transit", stylers: [{ visibility: "off" }] },
+      {
+        featureType: "administrative.locality",
+        elementType: "labels.text.fill",
+        stylers: [{ color: "#000000" }]
+      }
     ];
 
     const coaches = [
@@ -268,7 +279,9 @@
       map = new google.maps.Map(document.getElementById("map"), {
         zoom: 5,
         center: center,
-        styles: mapStyle
+        styles: mapStyle,
+        scrollwheel: true,
+        disableDefaultUI: false
       });
       loadMarkers(coaches);
     }
@@ -309,92 +322,9 @@
         loadMarkers(filtered);
       });
     });
-  <script>
-  const mapStyle = [
-    { elementType: "geometry", stylers: [{ color: "#fdfdfd" }] },
-    { elementType: "labels.icon", stylers: [{ visibility: "off" }] },
-    { elementType: "labels.text.fill", stylers: [{ color: "#444" }] },
-    { elementType: "labels.text.stroke", stylers: [{ color: "#fbf9f8" }] },
+  </script>
 
-    { featureType: "poi", stylers: [{ visibility: "off" }] },
-    { featureType: "poi.park", stylers: [{ visibility: "off" }] },
-
-    { featureType: "road", elementType: "geometry", stylers: [{ color: "#c0c0c0" }] },
-    { featureType: "road.arterial", stylers: [{ color: "#b0b0b0" }] },
-    { featureType: "road.highway", stylers: [{ color: "#999999" }] },
-    { featureType: "road.local", stylers: [{ color: "#d6d6d6" }] },
-
-    { featureType: "water", stylers: [{ visibility: "off" }] },
-    { featureType: "transit", stylers: [{ visibility: "off" }] },
-
-    {
-      featureType: "administrative.locality",
-      elementType: "labels.text.fill",
-      stylers: [{ color: "#000000" }]
-    }
-  ];
-
-  const coaches = [
-    { name: "Jamie", lat: -37.8136, lng: 144.9631, type: "In-Person", specialty: "Personal Trainer" },
-    { name: "Taylor", lat: -33.8688, lng: 151.2093, type: "Online", specialty: "Physiotherapist" },
-    { name: "Alex", lat: -27.4698, lng: 153.0251, type: "In-Person", specialty: "Dietitian" }
-  ];
-
-  let map;
-  let markers = [];
-
-  function initMap() {
-    const center = { lat: -33.8688, lng: 151.2093 };
-    map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 5,
-      center: center,
-      styles: mapStyle,
-      scrollwheel: true,
-      disableDefaultUI: false
-    });
-    loadMarkers(coaches);
-  }
-
-  function loadMarkers(data) {
-    markers.forEach(marker => marker.setMap(null));
-    markers = [];
-
-    data.forEach(coach => {
-      const marker = new google.maps.Marker({
-        position: { lat: coach.lat, lng: coach.lng },
-        map: map,
-        title: coach.name,
-      });
-
-      const info = new google.maps.InfoWindow({
-        content: `<strong>${coach.name}</strong><br>${coach.specialty}<br>${coach.type}`
-      });
-
-      marker.addListener("click", () => {
-        info.open(map, marker);
-      });
-
-      markers.push(marker);
-    });
-  }
-
-  document.querySelectorAll("#search-location, #health-type, #availability").forEach(el => {
-    el.addEventListener("input", () => {
-      const type = document.getElementById("health-type").value;
-      const avail = document.getElementById("availability").value;
-
-      const filtered = coaches.filter(coach => {
-        return (!type || coach.specialty === type) &&
-               (!avail || coach.type.toLowerCase() === avail);
-      });
-
-      loadMarkers(filtered);
-    });
-  });
-</script>
-
-<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWxrse2bAtAkZdXOhJN8xpufWmQgjs8m8&callback=initMap"></script>
-
+  <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWxrse2bAtAkZdXOhJN8xpufWmQgjs8m8&callback=initMap"></script>
 
 </body>
 </html>
